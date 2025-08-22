@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RealView | Professional Fake Review Detection Platform</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+  <style>
+    /* Professional Design System */
+    :root {
+      --primary-50: #e6f7f7;
+      --primary-500: #0ea5a5;
+      --primary-600: #0a8c8c;
+      --primary-700: #086969;
+      --secondary-500: #3b82f6;
+      --secondary-600: #2563eb;
+      --secondary-700: #1d4ed8;
+      --success-50: #f0fdf4;
+      --success-500: #22c55e;
+      --success-600: #16a34a;
+      --warning-50: #fefce8;
+      --warning-500: #eab308;
+      --danger-50: #fef2f2;
+      --danger-500: #ef4444;
+      --danger-600: #dc2626;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.25rem;
+      --radius: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.5;
+      color: var(--gray-800);
+      background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 50%, var(--gray-100) 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-600), var(--secondary-600));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--gray-600);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary-500), var(--secondary-500));
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-600);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      gap: 0.5rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-300);
+    }
+
+    .btn-outline:hover {
+      background: var(--gray-100);
+      border-color: var(--gray-400);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(to right, var(--primary-500), var(--secondary-500));
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray-700);
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, var(--primary-50) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, var(--secondary-50) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--primary-50);
+      color: var(--primary-700);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary-600), var(--secondary-600));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: var(--gray-600);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-200);
+      transition: all 0.2s ease;
+    }
+
+    .stat-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+    }
+
+    .stat-dot-primary { background: var(--primary-500); }
+    .stat-dot-secondary { background: var(--secondary-500); }
+    .stat-dot-success { background: var(--success-500); }
+
+    .stat-text {
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+
+    /* Detector */
+    .detector-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-bottom: 4rem;
+    }
+
+    .detector-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .detector-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .steps {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .step {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--gray-300);
+      transition: all 0.3s ease;
+    }
+
+    .step.active {
+      background: linear-gradient(to right, var(--primary-500), var(--secondary-500));
+      transform: scale(1.2);
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+      margin-bottom: 2rem;
+    }
+
+    .card-header {
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+      opacity: 0.5;
+    }
+
+    .card-header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-header-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-header-description {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      font-size: 0.875rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      background: white;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(14, 165, 165, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 200px;
+      resize: vertical;
+    }
+
+    /* Tabs */
+    .tabs {
+      margin-bottom: 1.5rem;
+    }
+
+    .tabs-list {
+      display: flex;
+      background: var(--gray-100);
+      border-radius: var(--radius-lg);
+      padding: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-trigger {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .tab-trigger.active {
+      background: white;
+      color: var(--primary-600);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* Progress */
+    .progress-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-label {
+      font-weight: 500;
+      color: var(--gray-700);
+      font-size: 0.875rem;
+    }
+
+    .progress-value {
+      font-weight: 600;
+      color: var(--gray-700);
+      font-size: 0.875rem;
+    }
+
+    .progress {
+      height: 0.5rem;
+      background: var(--gray-200);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease;
+    }
+
+    .progress-bar-gradient {
+      background: linear-gradient(to right, var(--primary-500), var(--secondary-500));
+    }
+
+    .progress-status {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-top: 0.5rem;
+    }
+
+    /* Alert */
+    .alert {
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .alert-info {
+      background: var(--secondary-50);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .alert-icon {
+      flex-shrink: 0;
+      color: var(--secondary-600);
+    }
+
+    .alert-content {
+      flex: 1;
+    }
+
+    .alert-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-700);
+    }
+
+    .alert-message {
+      color: var(--secondary-600);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .alert-list {
+      padding-left: 1.5rem;
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--secondary-600);
+    }
+
+    .alert-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Results */
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-score {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: white;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .result-score-real {
+      background: linear-gradient(135deg, var(--success-500), var(--primary-500));
+    }
+
+    .result-score-fake {
+      background: linear-gradient(135deg, var(--danger-500), var(--warning-500));
+    }
+
+    .result-score::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 50%;
+      background: linear-gradient(to right, var(--primary-500), var(--secondary-500));
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    .result-message {
+      padding: 1rem;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .result-section {
+      margin-bottom: 2rem;
+    }
+
+    .result-section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--gray-800);
+    }
+
+    .red-flags {
+      background: var(--danger-50);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+    }
+
+    .red-flag-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--danger-700);
+    }
+
+    .red-flag-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .red-flag-icon {
+      color: var(--danger-500);
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    /* Removed .sources-list and its children */
+
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* Features */
+    .features {
+      padding: 4rem 0;
+      background: white;
+      position: relative;
+    }
+
+    .features::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 90% 10%, var(--primary-50) 0%, transparent 50%),
+                  radial-gradient(circle at 10% 90%, var(--secondary-50) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .features-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .features-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .features-badge {
+      display: inline-block;
+      background: var(--primary-50);
+      color: var(--primary-700);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .features-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--gray-900);
+    }
+
+    .features-description {
+      color: var(--gray-600);
+      font-size: 1.125rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 1.5rem;
+      border: 1px solid var(--gray-100);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-500), var(--secondary-500));
+    }
+
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .feature-icon-primary {
+      background: var(--primary-50);
+      color: var(--primary-500);
+    }
+
+    .feature-icon-secondary {
+      background: var(--secondary-50);
+      color: var(--secondary-500);
+    }
+
+    .feature-icon-success {
+      background: var(--success-50);
+      color: var(--success-500);
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--gray-900);
+    }
+
+    .feature-description {
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 4rem 0;
+      background: var(--gray-50);
+      position: relative;
+    }
+
+    .how-it-works-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .how-it-works-badge {
+      display: inline-block;
+      background: var(--secondary-50);
+      color: var(--secondary-700);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .how-it-works-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--gray-900);
+    }
+
+    .how-it-works-description {
+      color: var(--gray-600);
+      font-size: 1.125rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .step-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .step-number {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--primary-600);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--gray-900);
+    }
+
+    .step-description {
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* About Section */
+    .about {
+      padding: 4rem 0;
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-content {
+      padding-right: 2rem;
+    }
+
+    .about-badge {
+      display: inline-block;
+      background: var(--primary-50);
+      color: var(--primary-700);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .about-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--gray-900);
+      line-height: 1.2;
+    }
+
+    .about-description {
+      font-size: 1.125rem;
+      color: var(--gray-600);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .about-text {
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: var(--radius-xl);
+    }
+
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-number.primary {
+      color: var(--primary-600);
+    }
+
+    .stat-number.secondary {
+      color: var(--secondary-600);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+
+    .about-card {
+      background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+      border-radius: var(--radius-2xl);
+      padding: 2rem;
+      color: white;
+    }
+
+    .about-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .about-card-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .about-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-feature:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-feature-icon {
+      flex-shrink: 0;
+    }
+
+    .about-feature-text {
+      font-size: 0.875rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--gray-900);
+      color: white;
+      padding: 4rem 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+      z-index: 0;
+    }
+
+    .footer-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+    }
+
+    .footer-logo-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .footer-description {
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+      max-width: 300px;
+    }
+
+    .footer-heading {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-link {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-link a {
+      color: var(--gray-400);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-size: 0.875rem;
+    }
+
+    .footer-link a:hover {
+      color: var(--primary-400);
+    }
+
+    .footer-column h3 {
+    color: #FFFFFF;
+    font-size: px;
+    font-weight: 700;
+    margin-bottom: 16px;
+
+    }
+
+    .footer-names {
+      color: var(--gray-400);
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      line-height: 2;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--gray-800);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--gray-500);
+    }
+
+    /* Utilities */
+    .hidden { display: none; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .ml-auto { margin-left: auto; }
+    .text-center { text-align: center; }
+
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* New/Modified styles for detailed results */
+    .prediction-details {
+      margin-top: 2.5rem; /* More space from previous section */
+      padding: 1.5rem;
+      background: var(--gray-50); /* A very light background */
+      border-radius: var(--radius-xl); /* Rounded corners */
+      border: 1px solid var(--gray-200); /* Subtle border */
+      box-shadow: var(--shadow); /* Little shadow */
+      display: grid;
+      gap: 1.5rem; /* Space between prediction items */
+      grid-template-columns: 1fr; /* Default to single column */
+    }
+
+    @media (min-width: 768px) {
+      .prediction-details {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+      }
+    }
+
+    .prediction-item {
+      background: var(--white); /* White background for each item */
+      padding: 1.25rem;
+      border-radius: var(--radius); /* Rounded corners */
+      border: 1px solid var(--gray-100);
+      box-shadow: var(--shadow-sm); /* Subtle shadow for each item */
+      transition: all 0.2s ease;
+    }
+
+    .prediction-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .prediction-item h4 {
+      font-size: 1.1rem; /* Slightly larger title */
+      font-weight: 700; /* Bolder */
+      color: var(--gray-800);
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .prediction-item h4::after { /* Underline effect for title */
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 3rem; /* Short line */
+        height: 2px;
+        background: var(--primary-500); /* Primary color line */
+        border-radius: var(--radius-full);
+    }
+
+    .prediction-item p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .prediction-item p:last-of-type {
+        margin-bottom: 0; /* No margin below last paragraph */
+    }
+
+    .prediction-item .confidence {
+      font-weight: 700; /* Make confidence numbers very bold */
+      color: var(--gray-900); /* Darker color for numbers */
+    }
+
+    /* Specific colors for confidence values if needed, might add span for Fake/Real values in HTML */
+    /*
+    .confidence-real { color: var(--success-600); }
+    .confidence-fake { color: var(--danger-600); }
+    */
+
+    .final-verdict {
+      font-size: 1.4rem; /* Larger font size for final verdict */
+      font-weight: 800; /* Very bold */
+      margin-top: 2.5rem; /* More space from prediction items */
+      padding-top: 1.5rem;
+      border-top: 2px dashed var(--gray-300); /* Stronger dashed line */
+      display: flex;
+      align-items: center;
+      gap: 0.75rem; /* More space between icon and text */
+      justify-content: center; /* Center the verdict */
+      text-align: center; /* Ensure text alignment */
+    }
+
+    .final-verdict.fake {
+      color: var(--danger-700);
+    }
+    .final-verdict.authentic {
+      color: var(--success-700);
+    }
+
+    .final-verdict svg {
+        width: 1.75rem; /* Larger icon */
+        height: 1.75rem;
+        flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+
+      .action-buttons .btn {
+        width: 100%;
+      }
+
+      .features-title, .how-it-works-title, .about-title {
+        font-size: 2rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-content {
+        padding-right: 0;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body id = "top">
+  <header class="header" id="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">RV</div>
+        <div class="logo-text">RealView</div>
+      </a>
+      <nav class="nav">
+        <a href="#top" class="nav-link">Home</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+      <button class="mobile-menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="hero-badge">Anomaly Detection</span>
+        <h1 class="hero-title">Fake Review Detector</h1>
+        <p class="hero-description">
+          This platform utilizes anomaly detection algorithms to enhance cybersecurity in e-commerce by identifying fraudulent reviews. Users can input a text review, and the system will analyze it to determine its authenticity.
+        </p>
+      </div>
+    </section>
+
+    <div class="container detector-container">
+      <div class="detector-header">
+        <h2 class="detector-title">Review Analysis Tool</h2>
+        <div class="steps">
+          <div class="step active" id="step-1-indicator"></div>
+          <div class="step" id="step-2-indicator"></div>
+          <div class="step" id="step-3-indicator"></div>
+        </div>
+      </div>
+
+      <!-- Step 1: Input Form -->
+      <div class="card" id="step-1">
+        <div class="card-header">
+          <div class="card-header-content">
+            <h3 class="card-header-title">Analyze Review</h3>
+            <p class="card-header-description">Enter the product review you want to verify for authenticity</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="tabs">
+          
+            <div class="tab-content active" id="text-tab">
+              <div class="form-group">
+                <label for="news-text" class="form-label">Review to Analyze</label>
+                <textarea id="news-text" class="form-input form-textarea" placeholder="Copy and paste the product review you want to analyze for authenticity..."></textarea>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-gradient btn-block btn-lg" id="continue-btn">Continue</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Confirmation -->
+      <div class="card hidden" id="step-2">
+        <div class="card-header">
+          <div class="card-header-content">
+            <h3 class="card-header-title">Confirm Analysis</h3>
+            <p class="card-header-description">Review your submission before proceeding with the analysis</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div style="background: var(--gray-50); padding: 1rem; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--gray-700);">Analysis Details</h4>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <p style="font-size: 0.875rem; color: var(--gray-500);">Analysis Type</p>
+                <p style="font-weight: 500; color: var(--gray-800);" id="confirm-type"></p>
+              </div>
+            </div>
+            <div>
+              <p style="font-size: 0.875rem; color: var(--gray-500);">Review to Analyze</p>
+              <div style="margin-top: 0.25rem; background: white; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--gray-200); max-height: 150px; overflow-y: auto;">
+                <p style="color: var(--gray-700); font-size: 0.875rem;" id="confirm-content"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info">
+            <div class="alert-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+            <div class="alert-content">
+              <div class="alert-title">Analysis Process</div>
+              <div class="alert-message">Our AI will analyze this review for authenticity by examining:</div>
+              <ul class="alert-list">
+                <li>Language patterns and natural writing style</li>
+                <li>Review sentiment and emotional authenticity</li>
+                <li>Grammar patterns and typing errors</li>
+                <li>Known fake review characteristics and bot patterns</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <button class="btn btn-outline" id="back-btn">Back</button>
+            <button class="btn btn-gradient" id="analyze-btn">Start Analysis</button>
+          </div>
+
+          <div class="progress-container hidden" id="progress-container">
+            <div class="progress-header">
+              <div class="progress-label">Analysis in progress...</div>
+              <div class="progress-value" id="progress-value">0%</div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-gradient" id="progress-bar" style="width: 0%;"></div>
+            </div>
+            <div class="progress-status animate-pulse" id="progress-status">Analyzing language patterns...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Results -->
+      <div class="card hidden" id="step-3">
+        <div class="card-header" id="result-header">
+          <!-- Dynamic content -->
+        </div>
+        <div class="card-body">
+          <div class="result-header">
+            <div>
+              <h3>Authenticity Score</h3>
+              <p style="color: var(--gray-500); font-size: 0.875rem;">Based on our comprehensive analysis</p>
+            </div>
+            <div class="result-score" id="result-score">
+              <!-- Dynamic content -->
+            </div>
+          </div>
+
+          <div class="result-message" id="result-message">
+            <!-- Dynamic content -->
+          </div>
+
+          <!-- NEW SECTION FOR DETAILED PREDICTIONS -->
+          <div class="prediction-details">
+            <div class="prediction-item">
+              <h4 id="supervised-prediction-label"></h4> <!-- Will display "Supervised Model Prediction: Fake/Real" -->
+              <p>Confidence &rarr; Real: <span class="confidence" id="supervised-confidence-real"></span>%, Fake: <span class="confidence" id="supervised-confidence-fake"></span>%</p>
+            </div>
+            <div class="prediction-item">
+              <h4 id="unsupervised-prediction-label"></h4> <!-- Will display "Unsupervised Model Prediction: Anomalous/Original" -->
+              <p>Confidence &rarr; Real: <span class="confidence" id="unsupervised-confidence-real"></span>%, Fake: <span class="confidence" id="unsupervised-confidence-fake"></span>%</p>
+            </div>
+            <div class="final-verdict" id="final-verdict">
+              <!-- Content fully managed by JS for icons and text -->
+            </div>
+          </div>
+          <!--------------------------------------------->
+
+          <div class="result-section hidden" id="red-flags-section">
+            <h3 class="result-section-title">Potential Red Flags</h3>
+            <div class="red-flags" id="red-flags-container">
+              <!-- Dynamic content -->
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-gradient ml-auto" id="reset-btn">Analyze New Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="features">
+      <div class="container features-container">
+        <div class="features-header">
+          <span class="features-badge">Advanced Technology</span>
+          <h2 class="features-title">Why Choose RealView?</h2>
+          <p class="features-description">
+            Our cutting-edge AI technology provides unparalleled accuracy in detecting fake reviews across all e-commerce platforms.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon feature-icon-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">Advanced Language Analysis</h3>
+            <p class="feature-description">
+             Our proprietary algorithms analyzed over various linguistic markers to identify natural and artificial writing patterns in reviews.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">Behavioral Pattern Detection</h3>
+            <p class="feature-description">
+              We analyze review patterns, timing, and user behavior to identify coordinated fake review campaigns and bot activity.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon-success">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="22"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Repetition Pattern Analysis</h3>
+            <p class="feature-description">
+              Our model detects excessive or unnatural symbol and word repetition that signifies human behavior.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <div class="how-it-works-header">
+          <span class="how-it-works-badge">Process Overview</span>
+          <h2 class="how-it-works-title">How It Works</h2>
+          <p class="how-it-works-description">
+            Our advanced AI system analyzes reviews through multiple layers of detection to provide range and percentage scores.
+          </s>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-icon">📝</div>
+            <div class="step-number">Step 01</div>
+            <h3 class="step-title">Input Review</h3>
+            <p class="step-description">
+              Simply paste the product review you want to analyze into our secure analysis tool.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🤖</div>
+            <div class="step-number">Step 02</div>
+            <h3 class="step-title">AI Analysis</h3>
+            <p class="step-description">
+              Our algorithms examine language patterns, sentiment authenticity, and behavioral indicators in real-time.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">📊</div>
+            <div class="step-number">Step 03</div>
+            <h3 class="step-title">Get Results</h3>
+            <p class="step-description">
+              Unmasking fake reviews, we dive deep into the data, analyzing the range and percentage of review characteristics to pinpoint suspicious patterns.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <span class="about-badge">About RealView</span>
+            <h2 class="about-title">Protecting Consumers from Fake Reviews</h2>
+            <p class="about-description">
+              RealView was founded with a mission to restore trust in online reviews. As e-commerce continues to grow, fake reviews have become a significant problem affecting both consumers and legitimate businesses.
+            </p>
+            <p class="about-text">
+              Our team of AI researchers and cybersecurity experts developed advanced machine learning algorithms that can detect subtle patterns in fake reviews that humans might miss. We analyze over 40 different linguistic and behavioral markers to provide accurate authenticity assessments.
+            </p>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-number primary">90%</div>
+                <div class="stat-label">Detection Accuracy</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number secondary">140K+</div>
+                <div class="stat-label">Reviews Analyzed</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-card">
+            <h3 class="about-card-title">Our Mission</h3>
+            <p class="about-card-description">
+              To empower consumers with the tools and knowledge they need to make informed purchasing decisions by identifying fraudulent reviews and promoting transparency in e-commerce.
+            </p>
+            <ul class="about-features">
+              <li class="about-feature">
+                <div class="about-feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <span class="about-feature-text">Advanced AI Detection Technology</span>
+              </li>
+              <li class="about-feature">
+                <div class="about-feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <span class="about-feature-text">Real-time Analysis & Results</span>
+              </li>
+              <li class="about-feature">
+                <div class="about-feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <span class="about-feature-text">Privacy-First Approach</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <div class="footer-logo-icon">RV</div>
+            <div class="footer-logo-text">RealView</div>
+          </div>
+          <p class="footer-description">
+            Empowering consumers with the tools to identify fake reviews in an era of online shopping uncertainty.
+          </p>
+      </div>
+
+  <div class="footer-column">
+    <h3>Creators</h3>
+    <div class = "footer-names">
+        <p>Francine Hernandez</p>
+        <p>Charlote Calosor</p>
+        <p>Crystal Joy Puertollano</p>
+        <p>Xyra Nicole Llave</p>
+        <p>Peona Sayson</p>
+    </div>
+  </div>
+
+        <div>
+          <h3 class="footer-heading">Company</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">About Us</a></li>
+            <li class="footer-link"><a href="#">How It Works</a></li>
+            <li class="footer-link"><a href="#">Contact</a></li>
+            <li class="footer-link"><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 RealView. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Tab functionality
+    const tabTriggers = document.querySelectorAll('.tab-trigger');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        tabTriggers.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        trigger.classList.add('active');
+        const tabId = trigger.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Form elements
+    const newsTextInput = document.getElementById('news-text');
+    const continueBtn = document.getElementById('continue-btn');
+    const backBtn = document.getElementById('back-btn');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const resetBtn = document.getElementById('reset-btn');
+
+    // Step elements
+    const step1 = document.getElementById('step-1');
+    const step2 = document.getElementById('step-2');
+    const step3 = document.getElementById('step-3');
+    const step1Indicator = document.getElementById('step-1-indicator');
+    const step2Indicator = document.getElementById('step-2-indicator');
+    const step3Indicator = document.getElementById('step-3-indicator');
+
+    // Confirmation elements
+    const confirmType = document.getElementById('confirm-type');
+    const confirmContent = document.getElementById('confirm-content');
+
+    // Progress elements
+    const progressContainer = document.getElementById('progress-container');
+    const progressBar = document.getElementById('progress-bar');
+    const progressValue = document.getElementById('progress-value');
+    const progressStatus = document.getElementById('progress-status');
+
+    // Result elements
+    const resultHeader = document.getElementById('result-header');
+    const resultScore = document.getElementById('result-score');
+    const resultMessage = document.getElementById('result-message');
+    const redFlagsSection = document.getElementById('red-flags-section');
+    const redFlagsContainer = document.getElementById('red-flags-container');
+
+    // NEW DETAILED PREDICTION ELEMENTS
+    const supervisedPredictionLabelElem = document.getElementById('supervised-prediction-label'); // Changed ID
+    const supervisedConfidenceRealElem = document.getElementById('supervised-confidence-real');
+    const supervisedConfidenceFakeElem = document.getElementById('supervised-confidence-fake');
+    const unsupervisedPredictionLabelElem = document.getElementById('unsupervised-prediction-label'); // Changed ID
+    const unsupervisedConfidenceRealElem = document.getElementById('unsupervised-confidence-real');
+    const unsupervisedConfidenceFakeElem = document.getElementById('unsupervised-confidence-fake');
+    const finalVerdictElem = document.getElementById('final-verdict');
+
+
+    // Continue to step 2
+    continueBtn.addEventListener('click', () => {
+      const content = newsTextInput.value.trim();
+
+      if (!content) {
+        alert('Please enter a review to analyze.');
+        return;
+      }
+
+      // Update confirmation
+      confirmType.textContent = 'Review Analysis';
+      confirmContent.textContent = content;
+
+      // Show step 2
+      step1.classList.add('hidden');
+      step2.classList.remove('hidden');
+      step1Indicator.classList.remove('active'); // Deactivate step 1
+      step2Indicator.classList.add('active');    // Activate step 2
+    });
+
+    // Back to step 1
+    backBtn.addEventListener('click', () => {
+      step2.classList.add('hidden');
+      step1.classList.remove('hidden');
+      step2Indicator.classList.remove('active'); // Deactivate step 2
+      step1Indicator.classList.add('active');    // Activate step 1
+    });
+
+    // Start analysis (API call)
+    analyzeBtn.addEventListener('click', async () => { // Made the function async
+      const reviewText = confirmContent.textContent; // Get the confirmed text
+
+      analyzeBtn.disabled = true;
+      backBtn.disabled = true;
+      progressContainer.classList.remove('hidden');
+
+      let progress = 0;
+      const progressMessages = [
+        'Initializing secure connection...',
+        'Analyzing language patterns...',
+        'Checking writing authenticity...',
+        'Evaluating sentiment patterns...',
+        'Detecting behavioral anomalies...',
+        'Comparing against known fake review characteristics...',
+        'Finalizing authenticity assessment...'
+      ];
+      let messageIndex = 0;
+
+      // Start a simulated progress bar
+      const interval = setInterval(() => {
+        progress += 5; // Increment by 5%
+        if (progress > 100) progress = 100; // Cap at 100%
+
+        progressBar.style.width = `${progress}%`;
+        progressValue.textContent = `${progress}%`;
+
+        // Update status message
+        if (progress >= (messageIndex + 1) * (100 / progressMessages.length) && messageIndex < progressMessages.length - 1) {
+          messageIndex++;
+        }
+        progressStatus.textContent = progressMessages[messageIndex];
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          // Don't show results immediately, wait for actual API call
+        }
+      }, 100); // Faster progress for responsiveness
+
+      // --- API CALL ---
+      const apiUrl = 'http://127.0.0.1:5000/predict_review'; // ENSURE THIS IS CORRECT AND MATCHES YOUR FLASK APP
+
+      try {
+          const response = await fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ review_text: reviewText }) // Send as JSON
+          });
+
+          if (!response.ok) {
+              // Try to parse error message from server
+              const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
+              throw new Error(`HTTP error! Status: ${response.status}. Message: ${errorData.error || errorData.message}`);
+          }
+
+          const data = await response.json(); // Parse the JSON response from your API
+
+          // Stop progress bar and show results
+          clearInterval(interval); // Ensure interval stops
+          progressBar.style.width = '100%';
+          progressValue.textContent = '100%';
+          progressStatus.textContent = 'Analysis Complete!';
+
+          setTimeout(() => {
+            renderResults(data); // Call a new function to render results
+          }, 500); // Small delay to let progress bar finish
+
+
+      } catch (error) {
+          console.error('Error during analysis:', error);
+          clearInterval(interval); // Stop progress on error
+          progressBar.style.width = '0%';
+          progressValue.textContent = 'Error!';
+          progressStatus.textContent = `Analysis failed: ${error.message}`;
+
+          alert(`Failed to connect to the analysis service. Please ensure your local Flask server is running and accessible. Error: ${error.message}`);
+
+          // Allow user to try again or go back
+          analyzeBtn.disabled = false;
+          backBtn.disabled = false;
+          progressContainer.classList.add('hidden'); // Hide progress on error
+      }
+    });
+
+    // Function to render results received from the API
+    function renderResults(data) {
+        // Determine if overall verdict is "Fake" or "Authentic" for styling
+        const isOverallFake = data.final_verdict.includes("Fake") || data.final_verdict.includes("Anomalous") || data.final_verdict.includes("Unusual Characteristics");
+        const authenticityScore = data.authenticity_score;
+        const redFlags = data.red_flags || []; // Ensure red_flags is an array
+
+        // Update result header
+        resultHeader.innerHTML = `
+            <div class="card-header-content">
+                <h3 class="card-header-title flex items-center gap-2">
+                    ${isOverallFake ?
+                        `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        ${data.final_verdict}` : // Use final verdict here
+                        `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        ${data.final_verdict}` // Use final verdict here
+                    }
+                </h3>
+                <p class="card-header-description">Analysis completed for review content</p>
+            </div>
+        `;
+
+        resultHeader.style.background = isOverallFake ?
+            'linear-gradient(135deg, var(--danger-500), var(--warning-500))' :
+            'linear-gradient(135deg, var(--success-500), var(--primary-500))';
+
+        // Update main authenticity score (progress bar score)
+        resultScore.textContent = `${authenticityScore}%`;
+        resultScore.className = `result-score ${isOverallFake ? 'result-score-fake' : 'result-score-real'}`;
+
+        // Update overall message
+        resultMessage.textContent = isOverallFake ?
+            'Our analysis indicates this review may be fake and should be considered with caution when making purchasing decisions.' :
+            'Our analysis indicates this review appears to be authentic based on our verification systems.';
+
+        // Populate NEW DETAILED PREDICTION ELEMENTS
+        supervisedPredictionLabelElem.textContent = `Supervised Model Prediction: ${data.supervised_prediction}`; // Updated
+        supervisedConfidenceRealElem.textContent = data.supervised_confidence_real.toFixed(2);
+        supervisedConfidenceFakeElem.textContent = data.supervised_confidence_fake.toFixed(2);
+
+        unsupervisedPredictionLabelElem.textContent = `Unsupervised Model Prediction: ${data.unsupervised_prediction}`; // Updated
+        unsupervisedConfidenceRealElem.textContent = data.unsupervised_confidence_real.toFixed(2);
+        unsupervisedConfidenceFakeElem.textContent = data.unsupervised_confidence_fake.toFixed(2);
+
+        // Populate final verdict with icon
+        finalVerdictElem.className = `final-verdict ${isOverallFake ? 'fake' : 'authentic'}`;
+        const verdictIcon = isOverallFake ?
+            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>` :
+            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+        finalVerdictElem.innerHTML = `Final Verdict: ${verdictIcon} <span id="final-verdict-text">${data.final_verdict}</span>`;
+
+
+        // Show red flags if overall fake AND if red flags are provided
+        if (isOverallFake && redFlags.length > 0) {
+            redFlagsSection.classList.remove('hidden');
+            redFlagsContainer.innerHTML = redFlags.map(flag => `
+                <div class="red-flag-item">
+                    <div class="red-flag-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <span class="red-flag-text">${flag}</span>
+                </div>
+            `).join('');
+        } else {
+            redFlagsSection.classList.add('hidden'); // Hide if not fake or no flags
+        }
+
+        // Show step 3
+        step2.classList.add('hidden');
+        step3.classList.remove('hidden');
+        step3.classList.add('fade-in');
+        step2Indicator.classList.remove('active'); // Deactivate step 2
+        step3Indicator.classList.add('active');    // Activate step 3
+    }
+
+    // Reset form
+    resetBtn.addEventListener('click', () => {
+      // Reset form fields
+      newsTextInput.value = '';
+
+      // Reset progress
+      progressBar.style.width = '0%';
+      progressValue.textContent = '0%';
+      progressStatus.textContent = 'Analysis in progress...'; // Reset status message
+
+      // Reset steps
+      step3.classList.add('hidden');
+      step1.classList.remove('hidden');
+      step1Indicator.classList.add('active');    // Activate step 1
+      step2Indicator.classList.remove('active'); // Deactivate step 2
+      step3Indicator.classList.remove('active'); // Deactivate step 3
+
+      // Reset buttons
+      analyzeBtn.disabled = false;
+      backBtn.disabled = false;
+
+      // Hide progress container
+      progressContainer.classList.add('hidden');
+
+      // Hide red flags section
+      redFlagsSection.classList.add('hidden');
+      redFlagsContainer.innerHTML = ''; // Clear red flags
+
+      // Clear previous results in result elements if they were visible
+      resultHeader.innerHTML = '';
+      resultScore.textContent = '';
+      resultScore.className = 'result-score'; // Reset classes
+      resultMessage.textContent = '';
+
+      // Clear new detailed prediction elements
+      supervisedPredictionLabelElem.textContent = ''; // Updated reset
+      supervisedConfidenceRealElem.textContent = '';
+      supervisedConfidenceFakeElem.textContent = '';
+      unsupervisedPredictionLabelElem.textContent = ''; // Updated reset
+      unsupervisedConfidenceRealElem.textContent = '';
+      unsupervisedConfidenceFakeElem.textContent = '';
+      finalVerdictElem.className = 'final-verdict'; // Reset class
+      finalVerdictElem.innerHTML = `Final Verdict: <span id="final-verdict-text"></span>`; // Reset inner HTML with span
+    });
+
+    // Form validation for continue button
+    function validateForm() {
+      const content = newsTextInput.value.trim();
+      continueBtn.disabled = !content;
+    }
+
+    newsTextInput.addEventListener('input', validateForm);
+
+    // Initial validation on page load
+    validateForm();
+  </script>
+</body>
+</html>
