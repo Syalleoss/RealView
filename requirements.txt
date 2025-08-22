@@ -1,4 +1,6 @@
 pip==25.2
+setuptools>=65
+wheel>=0.38
 blinker==1.8.2
 click==8.1.7
 colorama==0.4.6
@@ -21,4 +23,3 @@ uncompyle6==3.9.2
 Werkzeug==3.0.6
 xdis==6.1.1
 zipp==3.20.2
-
