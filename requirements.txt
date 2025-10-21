@@ -23,6 +23,8 @@ uncompyle6==3.9.2
 Werkzeug==3.0.6
 xdis==6.1.1
 zipp==3.20.2
+gunicorn
+
 
 
 
